@@ -14,26 +14,33 @@ class Menu {
 
         //TODO:deixar sem o try/catch para avaliar se a galera percebe que dá problema de entrada de dado se for string
         val opcao = readln().toInt()
-
+    try {
         when (opcao) {
             1 -> {
                 estoque.registrarItem()
-                this.menuPrincipal(estoque)
+                menuPrincipal(estoque)
             }
             2 -> {
                 estoque.listarItens()
-                this.menuPrincipal(estoque)
+                menuPrincipal(estoque)
             }
             3 -> {
                 estoque.darBaixaItem()
-                this.menuPrincipal(estoque)
+                menuPrincipal(estoque)
             }
 
-            4 -> exitProcess(10)
+            4 -> exitProcess(0)
             else -> {
                 println("Opção inválida, tente novamente")
                 menuPrincipal(estoque);
             }
         }
+
+    } catch (exception: Exception){
+        exception.message
+    } finally {
+        println("Opção invalida")
+        menuPrincipal(estoque)
+    }
     }
 }
