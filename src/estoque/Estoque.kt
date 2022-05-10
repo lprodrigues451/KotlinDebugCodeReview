@@ -5,38 +5,36 @@ import java.math.BigDecimal
 
 class Estoque {
     private val listaItem: ArrayList<Item> = ArrayList()
-    var codigo1 : Int = 0
-    var nomeItem: String = ""
-    var preco: BigDecimal= BigDecimal.ZERO
-    var item = Item(codigo = codigo1, nome = nomeItem, preco = preco)
 
     fun registrarItem() {
         println("Digite o código do produto: ")
-        codigo1 = readln().toInt()
-            println("Digite o nome do produto: ")
-            nomeItem = readln()
-            println("Digite o preco do produto: ")
-            preco = readln().toBigDecimal()
-            verificarItemRepetido()
+        var codigo1 = readln().toInt()
+        verificarItemRepetido(codigo1)
+        println("Digite o nome do produto: ")
+        var nomeItem = readln()
+        println("Digite o preco do produto: ")
+        var preco = readln().toBigDecimal()
+        var item = Item(codigo = codigo1, nome = nomeItem, preco = preco)
+        listaItem.add(item)
+        println("Item registrado com sucesso\n")
+
     }
 
-    fun verificarItemRepetido() {
-        if(item.codigo== codigo1){
-           println("Produdo ja cadastrado")
-            registrarItem()
+    fun verificarItemRepetido(codigo1:Int) {
+        listaItem.forEachIndexed(){index, item1 ->
+            if(codigo1==listaItem[index].codigo){
+                println("Produdo ja cadastrado")
+                registrarItem()
+            }
         }
-        else{
-            item = Item(codigo = codigo1, nome = nomeItem, preco = preco)
-            listaItem.add(item)
-            println("Item registrado com sucesso\n")
-        }
+
     }
 
     fun listarItens() {
         if (listaItem.isEmpty()) {
             println("Não temos nenhum item cadastrado no momento")
         } else {
-            println("Atualmente temos os seguintes itens: ${listaItem}");
+            println("Atualmente temos os seguintes itens: $listaItem");
         }
     }
     fun darBaixaItem() {

@@ -8,6 +8,6 @@ class Item(val codigo: Int, private val nome: String, private val preco: BigDeci
     protected val valorDesconto: String = "";
 
     override fun toString(): String {
-        return "código: $codigo | nome: $nome | preço(R$) $preco";
+        return "\ncódigo: $codigo | nome: $nome | preço(R$) $preco";
     }
 }

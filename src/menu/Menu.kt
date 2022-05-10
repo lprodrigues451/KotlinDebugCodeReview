@@ -5,7 +5,7 @@ import kotlin.system.exitProcess
 
 class Menu {
     fun menuPrincipal(estoque: Estoque) {
-
+        try {
         println("O que deseja fazer?")
         println("1 - Cadastrar novo item")
         println("2 - Ver lista de itens disponíveis para compra")
@@ -14,7 +14,7 @@ class Menu {
 
         //TODO:deixar sem o try/catch para avaliar se a galera percebe que dá problema de entrada de dado se for string
         val opcao = readln().toInt()
-    try {
+
         when (opcao) {
             1 -> {
                 estoque.registrarItem()
